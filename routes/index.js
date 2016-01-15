@@ -1,6 +1,6 @@
 var express = require('express');
-var fs      = require('fs-extra');
-var _       = require('lodash');
+var fs = require('fs-extra');
+var _ = require('lodash');
 
 var router = express.Router();
 
@@ -31,7 +31,10 @@ var enabledServices = _.filter(config, function(item) {
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'manage-this-node', services: enabledServices });
+  res.render('index', {
+    title: 'manage-this-node',
+    services: enabledServices
+  });
 });
 
 module.exports = router;
