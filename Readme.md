@@ -50,4 +50,4 @@ Goto `localhost:3000` to see the app.
   - Landing Page is left out becuase it seems to load fast enough with the 7 services I use.
 
 ## Known Issues
-- Problem: Nothing is displaying, Solution: Disable Adblock/uBlock and Ghostery/Privacy Badger
+- Problem: Nothing is displaying, Solution: Disable Adblock/uBlock and Ghostery/Privacy Badger for the website.
