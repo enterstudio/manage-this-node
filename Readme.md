@@ -12,7 +12,7 @@ Getting Started
 ## Installation
 
 ```bash
-# Clone the repository
+# Clone the repository or download the ZIP and extract it
 git clone https://github.com/onedr0p/manage-this-node
 ```
 
