@@ -44,7 +44,7 @@ npm start
 Goto `localhost:3000` to see the app.
 
 ## Differences from [Muximux](https://github.com/mescon/Muximux/) and [Managethis](https://github.com/Tenzinn3/Managethis)
-- NodeJS is used for a webserver
+- Written in NodeJS, which comes with it's own webserver.
 - Config doesn't have enabled or landing page options
   - Enabled is determined if the URL is filled out
   - Landing Page is left out becuase it seems to load fast enough with the 7 services I use.
