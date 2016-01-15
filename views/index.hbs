@@ -1,31 +1,31 @@
 <div class="cd-tabs">
-	<nav>
-		<ul class="cd-tabs-navigation">
-			{{#each services}}
-				<li>
-					{{#if default}}
-						<a data-content="{{@key}}" class="selected"><span class="{{icon}} fa-lg"></span> {{name}}</a>
-					{{else}}
-						<a data-content="{{@key}}"><span class="{{icon}} fa-lg"></span> {{name}}</a>
-					{{/if}}
-				</li>
-			{{/each}}
+  <nav>
+    <ul class="cd-tabs-navigation">
+      {{#each services}}
+        <li>
+          {{#if default}}
+            <a data-content="{{@key}}" class="selected"><span class="{{icon}} fa-lg"></span> {{name}}</a>
+          {{else}}
+            <a data-content="{{@key}}"><span class="{{icon}} fa-lg"></span> {{name}}</a>
+          {{/if}}
+        </li>
+      {{/each}}
 
-			<li><a id="reload" title="Double click your app in the menu, or press this button to refresh the current app."><span class="fa fa-refresh fa-lg"></span></a></li>
-		</ul>
-	</nav>
+      <li><a id="reload" title="Double click your app in the menu, or press this button to refresh the current app."><span class="fa fa-refresh fa-lg"></span></a></li>
+    </ul>
+  </nav>
 
-	<ul class="cd-tabs-content">
-		{{#each services}}
-			{{#if default}}
-				<li data-content="{{@key}}" class="selected">
-					<iframe scrolling="auto" src="{{url}}"></iframe>
-				</li>
-			{{else}}
-				<li data-content="{{@key}}">
-					<iframe scrolling="auto" src="{{url}}"></iframe>
-				</li>
-			{{/if}}
-		{{/each}}
-	</ul>
+  <ul class="cd-tabs-content">
+    {{#each services}}
+      {{#if default}}
+        <li data-content="{{@key}}" class="selected">
+          <iframe scrolling="auto" src="{{url}}"></iframe>
+        </li>
+      {{else}}
+        <li data-content="{{@key}}">
+          <iframe scrolling="auto" src="{{url}}"></iframe>
+        </li>
+      {{/if}}
+    {{/each}}
+  </ul>
 </div>
