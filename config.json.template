@@ -1,0 +1,80 @@
+{
+  "rutorrent": {
+    "default": false,
+    "name": "RuTorrent",
+    "url": "",
+    "icon": "fa fa-globe"
+  },
+  "sonarr": {
+    "default": false,
+    "name": "Sonarr",
+    "url": "",
+    "icon": "glyphicon glyphicon-calendar"
+  },
+  "sickrage": {
+    "default": false,
+    "name": "SickRage",
+    "url": "",
+    "icon": "glyphicon glyphicon-calendar"
+  },
+  "couchpotato": {
+    "default": false,
+    "name": "CouchPotato",
+    "url": "",
+    "icon": "fa fa-television"
+  },
+  "headphones": {
+    "default": false,
+    "name": "HeadPhones",
+    "url": "",
+    "icon": "glyphicon glyphicon-headphones"
+  },
+  "glances": {
+    "default": false,
+    "name": "Glances",
+    "url": "",
+    "icon": "glyphicon glyphicon-dashboard"
+  },
+  "plexrequests": {
+    "default": false,
+    "name": "PlexRequests",
+    "url": "",
+    "icon": "glyphicon glyphicon-bullhorn"
+  },
+  "nzbget": {
+    "default": false,
+    "name": "NZBGet",
+    "url": "",
+    "icon": "fa fa-download"
+  },
+  "sabnzbd": {
+    "default": false,
+    "name": "SABNZBd",
+    "url": "",
+    "icon": "fa fa-download"
+  },
+  "plexpy": {
+    "default": false,
+    "name": "PlexPy",
+    "url": "",
+    "icon": "fa fa-server"
+  },
+  "nzbhydra": {
+    "default": false,
+    "name": "NZB Hydra",
+    "url": "",
+    "icon": "glyphicon glyphicon-search"
+  },
+  "deluge": {
+    "default": false,
+    "name": "Deluge",
+    "url": "",
+    "icon": "fa fa-tint"
+  },
+  "plex": {
+    "default": true,
+    "name": "Plex",
+    "url": "https://app.plex.tv/web/",
+    "icon": "fa fa-play-circle"
+  }
+}
