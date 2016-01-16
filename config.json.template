@@ -1,9 +1,15 @@
 {
   "rutorrent": {
     "default": false,
-    "name": "RuTorrent",
+    "name": "ruTorrent",
     "url": "",
     "icon": "fa fa-globe"
+  },
+  "syncthing": {
+    "default": false,
+    "name": "Syncthing",
+    "url": "",
+    "icon": "fa fa-exchange"
   },
   "sonarr": {
     "default": false,
@@ -76,5 +82,11 @@
     "name": "Plex",
     "url": "https://app.plex.tv/web/",
     "icon": "fa fa-play-circle"
+  },
+  "emby": {
+    "default": false,
+    "name": "Emby",
+    "url": "",
+    "icon": "fa fa-caret-square-o-right"
   }
 }
