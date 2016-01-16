@@ -43,6 +43,20 @@ npm start
 
 Goto `localhost:3000` to see the app.
 
+## Running forever
+To have the app run forever in the background
+
+```bash
+# Install forever
+npm install forever -g
+
+# Run forever
+forever start ./bin/www
+```
+
+**Important note**: Restart the app after making any changes to the `config.json` file.
+
+Goto `localhost:3000` to see the app.
 
 App Specific Workarounds
 ---------------
