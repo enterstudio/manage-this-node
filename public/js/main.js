@@ -19,7 +19,7 @@ jQuery(document).ready(function($){
 					selectedContent.children('iframe').attr('src', selectedContent.children('iframe').attr('src'));
 				});
 
-				var sifsrc = selectedContent.children('iframe').src;
+				var sifsrc = selectedContent.children('iframe').attr('src');
 				if (sifsrc === undefined || sifsrc === "") {
 					selectedContent.children('iframe').attr('src', selectedContent.children('iframe').data('src'));
 				}
