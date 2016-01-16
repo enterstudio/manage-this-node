@@ -19,11 +19,11 @@
     {{#each services}}
       {{#if default}}
         <li data-content="{{@key}}" class="selected">
-          <iframe scrolling="auto" src="{{url}}"></iframe>
+          <iframe scrolling="auto" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" src="{{url}}"></iframe>
         </li>
       {{else}}
         <li data-content="{{@key}}">
-          <iframe scrolling="auto" data-src="{{url}}"></iframe>
+          <iframe scrolling="auto" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" data-src="{{url}}"></iframe>
         </li>
       {{/if}}
     {{/each}}
