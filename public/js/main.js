@@ -19,6 +19,11 @@ jQuery(document).ready(function($){
 					selectedContent.children('iframe').attr('src', selectedContent.children('iframe').attr('src'));
 				});
 
+				var sifsrc = selectedContent.children('iframe').src;
+				if (sifsrc === undefined || sifsrc === "") {
+					selectedContent.children('iframe').attr('src', selectedContent.children('iframe').data('src'));
+				}
+
 				tabItems.find('a.selected').removeClass('selected');
 				selectedItem.addClass('selected');
 				selectedContent.addClass('selected').siblings('li').removeClass('selected');
