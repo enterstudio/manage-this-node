@@ -54,10 +54,6 @@ jQuery(document).ready(function($){
 		$('#modalSettings').modal('show');
 	});
 
-	Sortable.create(sortableServices, {
-		handle: '.my-handle'
-	});
-
 	$(window).on('resize', function(){
 		tabs.each(function(){
 			var tab = $(this);
@@ -67,6 +63,11 @@ jQuery(document).ready(function($){
 		resizeIframe(); // Resize iframes when window is resized.
 	});
 
+
+	Sortable.create(sortableServices, {
+	  handle: '.handle',
+	  animation: 150
+	});
 
 	function checkScrolling(tabs){
 		var totalTabWidth = parseInt(tabs.children('.cd-tabs-navigation').width()),
@@ -85,6 +86,6 @@ jQuery(document).ready(function($){
 	}
 
 
-// Call resizeIframe when document is ready
-resizeIframe();
+	// Call resizeIframe when document is ready
+	resizeIframe();
 });

@@ -3,6 +3,7 @@ var favicon      = require('serve-favicon');
 var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
 var _            = require('lodash');
+var fs           = require('fs-extra');
 
 var config = require(__dirname + '/lib/config');
 
@@ -47,9 +48,24 @@ app.get('/', function(req, res, next) {
  * POST settings
  */
 app.post('/', function(req, res) {
-  var nconf = require('nconf');
 
-  console.log(JSON.stringify(req.body));
+  //console.log(JSON.stringify(req.body));
+
+  //_.forEach(req.body.services, function(val, key) {
+  //  console.log(key, val);
+  //});
+
+  // update for session
+  res.app.locals.title    = req.body.title || 'Awesome place!';
+  res.app.locals.port     = req.body.port || 3000;
+  res.app.locals.services = req.body.services;
+
+  // @TODO update config
+  // write file with the follow  contents
+  // JSON.stringify(object, null, 2)
+
+  // redirect to home
+  res.redirect('/');
 
 });
 
