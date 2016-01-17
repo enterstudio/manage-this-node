@@ -26,15 +26,18 @@ try {
 }
 
 var enabledServices = _.filter(config, function(item) {
-  return item.url !== "";
+  return (item.url !== undefined && item.url !== "");
 });
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', {
-    title: 'manage-this-node',
+    title: config.app.title || 'manage-this-node',
     services: enabledServices
   });
 });
 
-module.exports = router;
+module.exports = { 
+    router: router,
+    port: config.app.port || 3000
+};
