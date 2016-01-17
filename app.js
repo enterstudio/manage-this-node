@@ -1,48 +1,56 @@
 var express      = require('express');
-var path         = require('path');
 var favicon      = require('serve-favicon');
 var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
+var _            = require('lodash');
 
-var config     = require(__dirname + '/lib/config');
-
-var indexRoute  = require(__dirname + '/routes/index');
-var configRoute = require(__dirname + '/routes/config');
+var config = require(__dirname + '/lib/config');
 
 var app = express();
-
-app.set('views', path.join(__dirname, 'views'));
+app.set('config', config);
+app.set('views', __dirname + '/views');
 app.set('view engine', 'hbs');
-
 // app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(config.app.urlBase, express.static(path.join(__dirname, 'public')));
-
-app.use(config.app.urlBase, indexRoute);
-app.use(config.app.urlBase + '/config/', configRoute);
+app.use(express.static(__dirname + '/public'));
 
 // set local variables
 app.locals.title    = config.app.title;
 app.locals.port     = config.app.port;
-app.locals.urlBase  = config.app.urlBase;
 app.locals.services = config.services;
 
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
+/*
+ * GET index
+ */
+app.get('/', function(req, res, next) {
+
+  var enabledServices = _.filter(res.app.locals.services, function(item) {
+    return (item.url !== undefined && item.url !== '');
+  });
+
+  res.render('index.hbs', {
+    title: res.app.locals.title,
+    services: enabledServices
+  });
 });
 
-// production error handler
-app.use(function(err, req, res, next) {
-  res.status(err.status || 500);
-  res.render('error', {
-    message: err.message,
-    error: {}
+/*
+ * GET settings
+ */
+app.get('/settings', function(req, res, next) {
+  res.render('settings', {
+    title: res.app.locals.title + ' > settings'
   });
+});
+
+/*
+ * POST settings
+ */
+app.post('/settings', function(req, res) {
+  var nconf = require('nconf');
+  
 });
 
 module.exports = app;
