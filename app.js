@@ -1,12 +1,13 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
+var express      = require('express');
+var path         = require('path');
+var favicon      = require('serve-favicon');
 var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
+var bodyParser   = require('body-parser');
 
-var config = require(__dirname + '/lib/config');
+var config     = require(__dirname + '/lib/config');
 
-var index = require(__dirname + '/routes/index');
+var indexRoute  = require(__dirname + '/routes/index');
+var configRoute = require(__dirname + '/routes/config');
 
 var app = express();
 
@@ -17,14 +18,16 @@ app.set('view engine', 'hbs');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(config.app.urlBase, express.static(path.join(__dirname, 'public')));
 
+app.use(config.app.urlBase, indexRoute);
+app.use(config.app.urlBase + '/config/', configRoute);
+
+// set local variables
 app.locals.title    = config.app.title;
 app.locals.port     = config.app.port;
 app.locals.urlBase  = config.app.urlBase;
 app.locals.services = config.services;
-
-app.use(config.app.urlBase || '/', index);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -1,9 +1,11 @@
 var express = require('express');
-var _ = require('lodash');
+var _       = require('lodash');
 
 var router = express.Router();
 
-/* GET home page. */
+/*
+ * get index
+ */
 router.get('/', function(req, res, next) {
 
   var enabledServices = _.filter(res.app.locals.services, function(item) {
@@ -11,7 +13,7 @@ router.get('/', function(req, res, next) {
   });
 
   res.render('index', {
-    title: res.app.locals.title || 'manage-this-node',
+    title: res.app.locals.title,
     services: enabledServices
   });
 });
