@@ -14,7 +14,7 @@ Primary style
 }
 
 body {
-  font-size: 0px;
+  font-size: 16px;
   font-family: "PT Sans", sans-serif;
 }
 
@@ -153,6 +153,25 @@ Main components
   line-height: 1.6;
   color: #8493bf;
   margin-bottom: 2em;
+}
+
+body.dragging, body.dragging * {
+  cursor: move !important;
+}
+
+.dragged {
+  position: absolute;
+  opacity: 0.5;
+  z-index: 2000;
+}
+
+ol.example li.placeholder {
+  position: relative;
+  /** More li styles **/
+}
+ol.example li.placeholder:before {
+  position: absolute;
+  /** Define arrowhead **/
 }
 
 @media only screen and (min-width: 0px) {

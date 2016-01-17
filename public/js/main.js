@@ -10,6 +10,10 @@ jQuery(document).ready(function($){
 		tabItems.on('click', 'a', function(event){
 			event.preventDefault();
 			var selectedItem = $(this);
+			if (selectedItem.attr('id') === 'settings') {
+				return;
+			}
+
 			if( !selectedItem.hasClass('selected') ) {
 				var selectedTab = selectedItem.data('content'),
 					selectedContent = tabContentWrapper.find('li[data-content="'+selectedTab+'"]'),
@@ -20,7 +24,7 @@ jQuery(document).ready(function($){
 				});
 
 				var sifsrc = selectedContent.children('iframe').attr('src');
-				if (sifsrc === undefined || sifsrc === "") {
+				if (sifsrc === undefined || sifsrc === '') {
 					selectedContent.children('iframe').attr('src', selectedContent.children('iframe').data('src'));
 				}
 
@@ -41,12 +45,18 @@ jQuery(document).ready(function($){
 		});
 	});
 
-
 	$('#reload').on('click', function(){
 		var selectedFrame = $('.cd-tabs-content').find('.selected').children('iframe');
 		selectedFrame.attr('src', selectedFrame.attr('src'));
 	});
 
+	$('#settings').on('click', function(){
+		$('#modalSettings').modal('show');
+	});
+
+	Sortable.create(sortableServices, {
+		handle: '.my-handle'
+	});
 
 	$(window).on('resize', function(){
 		tabs.each(function(){

@@ -12,7 +12,10 @@
       {{/each}}
 
       <li>
-        <a id="reload" title="Double click your app in the menu, or press this button to refresh the current app."><span class="fa fa-refresh fa-lg"></span></a>
+        <a id="settings"><span class="fa fa-cog fa-lg"></span></a>
+      </li>
+      <li>
+        <a id="reload"><span class="fa fa-refresh fa-lg"></span></a>
       </li>
     </ul>
   </nav>
@@ -30,4 +33,60 @@
       {{/if}}
     {{/each}}
   </ul>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modalSettings" tabindex="-1" role="dialog" aria-labelledby="Settings" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <form class="form-inline" method="POST" action="/" enctype="application/json">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="modalSettingsLabel">Settings</h4>
+        </div>
+        <div class="modal-body">
+
+          <div class="form-group">
+            <input class="form-control" type="text" name='title' value="{{title}}" placeholder="Website Title">
+          </div>
+          <div class="form-group">
+            <input class="form-control" type="number" name='port' value="{{port}}" placeholder="Website Port">
+          </div>
+
+          <ul id="sortableServices" class="list-group">
+            {{#each allServices}}
+
+              <li class="list-group-item">
+                <div class="form-group">
+                  <div class="input-group">
+                    <div class="input-group-addon">
+                      <span class="my-handle fa fa-bars"></span>
+                    </div>
+                    <input class="form-control" type="text" name='service[{{@key}}][name]' value="{{name}}" placeholder="Service Name">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <input class="form-control" type="text" name='service[{{@key}}][url]' value="{{url}}" placeholder="URL">
+                </div>
+                <div class="form-group">
+                  <input class="form-control" type="text" name='service[{{@key}}][icon]' value="{{icon}}" placeholder="Icon">
+                </div>
+                <div class="form-group">
+                  <div class="radio">
+                    <label>
+                      <input type="radio" name='service[{{@key}}][default]' value="true"> default
+                    </label>
+                  </div>
+                </div>
+              </li>
+            {{/each}}
+          </ul>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Save changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
 </div>
