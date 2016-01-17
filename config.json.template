@@ -1,4 +1,9 @@
 {
+  "app": {
+    "title": "manage-this-node",
+    "baseUrl": "",
+    "port": 3000
+  },
   "rutorrent": {
     "default": false,
     "name": "ruTorrent",
