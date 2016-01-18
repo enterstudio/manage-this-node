@@ -63,7 +63,7 @@ app.post('/', function(req, res) {
       'name'   : name,
       'url'    : url,
       'icon'   : icon,
-      'sort'   : sort,
+      'sort'   : parseInt(sort, 10),
       'default': defaultPage
     });
   });
