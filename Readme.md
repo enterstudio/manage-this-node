@@ -77,5 +77,8 @@ Windows:
 - Written in NodeJS, which comes with it's own webserver.
 - In App configuration
 
+## Notes
+It is strongly advised if this WebApp is open to the outside world use Basic Auth (.htpasswd / .htaccess). Your URLs (and passwords) are exposed in the HTML source.
+
 ## Known Issues
 - Problem: Nothing is displaying, Solution: Disable Adblock/uBlock and Ghostery/Privacy Badger for the website.
