@@ -1,6 +1,7 @@
 {
   "name": "manage-this-node",
-  "version": "0.0.0",
+  "version": "0.1.1",
+  "description": "A landing page for your WebApps",
   "private": true,
   "scripts": {
     "start": "node ./bin/www"
@@ -17,5 +18,25 @@
     "morgan": "~1.6.1",
     "nconf": "^0.8.2",
     "serve-favicon": "~2.3.0"
+  },
+  "repository": "git://github.com/onedr0p/manage-this-node",
+  "keywords": [
+    "couchpotato",
+    "sonarr",
+    "plex",
+    "plexpy",
+    "emby",
+    "glances",
+    "rtorrent",
+    "rutorrent",
+    "deluge"
+  ],
+  "engines": {
+    "node": ">=0.10"
+  },
+  "author": "Devin Buhl <devin.kray@gmail.com>",
+  "license": "GPL",
+  "devDependencies": {
+    "jshint": "^2.9.1-rc1"
   }
 }

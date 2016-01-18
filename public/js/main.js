@@ -63,11 +63,19 @@ jQuery(document).ready(function($){
 		resizeIframe(); // Resize iframes when window is resized.
 	});
 
-
-	Sortable.create(sortableServices, {
-	  handle: '.handle',
-	  animation: 150
+	$('input[type=number][name=port]').tooltip({
+    placement: 'right',
+    trigger: 'focus'
 	});
+
+	$('#submit').click(function() {
+			$('#form').submit();
+	});
+
+	// var sortable = Sortable.create(sortableServices, {
+	//   handle: '.handle',
+	//   animation: 150
+	// });
 
 	function checkScrolling(tabs){
 		var totalTabWidth = parseInt(tabs.children('.cd-tabs-navigation').width()),

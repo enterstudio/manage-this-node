@@ -1,12 +1,12 @@
 <div class="cd-tabs">
   <nav>
     <ul class="cd-tabs-navigation">
-      {{#each services}}
+      {{#each enabledServices}}
         <li>
           {{#if default}}
-            <a data-content="{{@key}}" class="selected"><span class="{{icon}} fa-lg"></span> {{name}}</a>
+            <a data-content="{{_id}}" class="selected"><span class="{{icon}} fa-lg"></span> {{name}}</a>
           {{else}}
-            <a data-content="{{@key}}"><span class="{{icon}} fa-lg"></span> {{name}}</a>
+            <a data-content="{{_id}}"><span class="{{icon}} fa-lg"></span> {{name}}</a>
           {{/if}}
         </li>
       {{/each}}
@@ -23,11 +23,11 @@
   <ul class="cd-tabs-content">
     {{#each services}}
       {{#if default}}
-        <li data-content="{{@key}}" class="selected">
+        <li data-content="{{_id}}" class="selected">
           <iframe scrolling="auto" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" src="{{url}}"></iframe>
         </li>
       {{else}}
-        <li data-content="{{@key}}">
+        <li data-content="{{_id}}">
           <iframe scrolling="auto" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" data-src="{{url}}"></iframe>
         </li>
       {{/if}}
@@ -39,57 +39,61 @@
 <div class="modal fade" id="modalSettings" tabindex="-1" role="dialog" aria-labelledby="Settings" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
-      <form class="form-inline" method="POST" action="/" enctype="application/json">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
           <h4 class="modal-title" id="modalSettingsLabel">Settings</h4>
         </div>
         <div class="modal-body">
+          <form id="form" name="form" class="form-horizontal" method="POST" action="/" enctype="application/json">
+            <div class="form-group">
+              <label class="col-sm-1" for="title">Title</label>
+              <div class="col-sm-5"><input type="text" class="form-control input-sm" id="title" value="{{title}}" name="title" placeholder="website title"></div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-1" for="port">Port</label>
+              <div class="col-sm-5"><input data-toggle="tooltip" title="requires restart" type="number" min="0" class="form-control input-sm" id="port" name="port" value="{{port}}" placeholder="port"></div>
+            </div>
 
-          <div class="form-group">
-            <input class="form-control" type="text" name='title' value="{{title}}" placeholder="Website Title">
-          </div>
-          <div class="form-group">
-            <input class="form-control" type="number" name='port' value="{{port}}" placeholder="Website Port">
-          </div>
+            <div class="col-xs-3">Name</div>
+            <div class="col-xs-4">URL</div>
+            <div class="col-xs-2">Icon</div>
+            <div class="col-xs-2">Sort</div>
+            <div class="col-xs-1">Default</div>
 
-          <ul id="sortableServices" class="list-group">
             {{#each allServices}}
-              <li class="list-group-item">
-                <div class="form-group">
-                  <div class="input-group">
-                    <div class="input-group-addon">
-                      <span class="handle fa fa-bars"></span>
-                    </div>
-                    <input class="form-control" type="text" name='services[{{@key}}][name]' value="{{name}}" placeholder="Service Name">
-                  </div>
+              <input type="hidden" name="services[{{_id}}][_id]" value="{{_id}}" />
+              <div class="form-group">
+                <div class="col-xs-3">
+                  <input type="text" class="form-control input-sm" name="services[{{_id}}][name]" value="{{name}}" placeholder="name">
                 </div>
-                <div class="form-group">
-                  <input class="form-control" type="text" name='services[{{@key}}][url]' value="{{url}}" placeholder="URL">
+                <div class="col-xs-4">
+                  <input type="text" class="form-control input-sm" name="services[{{_id}}][url]" value="{{url}}" placeholder="url">
                 </div>
-                <div class="form-group">
-                  <input class="form-control" type="text" name='services[{{@key}}][icon]' value="{{icon}}" placeholder="Icon">
+                <div class="col-xs-2">
+                  <input type="text" class="form-control input-sm" name="services[{{_id}}][icon]" value="{{icon}}" placeholder="icon">
                 </div>
-                <div class="form-group">
+                <div class="col-xs-2">
+                  <input type="number" min="0" class="form-control input-sm" name="services[{{_id}}][sort]" value="{{sort}}" placeholder="sort">
+                </div>
+                <div class="col-xs-1">
                   <div class="radio">
-                    <label>
-                      {{#if default}}
-                        <input type="radio" name='services[{{@key}}][default]' value="true" checked> default
-                      {{else}}
-                        <input type="radio" name='services[{{@key}}][default]' value="true"> default
-                      {{/if}}
-                    </label>
+                  <label>
+                    {{#if default}}
+                      <input type="radio" name="default" value="{{_id}}" checked>
+                    {{else}}
+                      <input type="radio" name="default" value="{{_id}}">
+                    {{/if}}
+                  </label>
                   </div>
                 </div>
-              </li>
+              </div>
             {{/each}}
-          </ul>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary">Save changes</button>
-        </div>
-      </form>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button id="submit" type="button" class="btn btn-primary">Save changes</button>
+      </div>
     </div>
   </div>
 </div>

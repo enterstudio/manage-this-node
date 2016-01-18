@@ -33,14 +33,10 @@ app.get('/', function(req, res, next) {
     return (item.url !== undefined && item.url !== '');
   });
 
-  enabledServices = _.sortBy(enabledServices, '_sort');
-
-  var allServices = _.sortBy(res.app.locals.services, '_sort');
-
   res.render('index', {
     title: res.app.locals.title,
-    services: enabledServices,
-    allServices: allServices
+    enabledServices: _.sortBy(enabledServices, 'sort'),
+    allServices: _.sortBy(res.app.locals.services, 'sort')
   });
 });
 
@@ -49,20 +45,44 @@ app.get('/', function(req, res, next) {
  */
 app.post('/', function(req, res) {
 
-  //console.log(JSON.stringify(req.body));
+  console.log(JSON.stringify(req.body));
 
-  //_.forEach(req.body.services, function(val, key) {
-  //  console.log(key, val);
-  //});
+  var services = [];
+  _.forEach(req.body.services, function(n, key) {
+    var _id  = n._id;
+    var name = n.name;
+    var url  = n.url;
+    var icon = n.icon;
+    var sort = n.sort || null;
+
+    var defaultPage = false;
+    if (_id == req.body.default) {
+      defaultPage = true;
+    }
+
+    services.push({
+      '_id'    : _id,
+      'name'   : name,
+      'url'    : url,
+      'icon'   : icon,
+      'sort'   : sort,
+      'default': defaultPage
+    });
+  });
+
+  console.log(JSON.stringify(services));
 
   // update for session
-  res.app.locals.title    = req.body.title || 'Awesome place!';
-  res.app.locals.port     = req.body.port || 3000;
-  res.app.locals.services = req.body.services;
+  res.app.locals.title    = req.body.title;
+  // res.app.locals.port     = req.body.port; // don't update port (this will be updated on restart)
+  res.app.locals.services = services;
 
-  // @TODO update config
   // write file with the follow  contents
-  // JSON.stringify(object, null, 2)
+  fs.writeJsonSync(__dirname + '/config.json', {
+    'title'   : req.body.title,
+    'port'    : req.body.port,
+    'services': services
+  });
 
   // redirect to home
   res.redirect('/');

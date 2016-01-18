@@ -14,7 +14,7 @@ Primary style
 }
 
 body {
-  font-size: 16px;
+  font-size: 0px;
   font-family: "PT Sans", sans-serif;
 }
 
@@ -155,23 +155,8 @@ Main components
   margin-bottom: 2em;
 }
 
-body.dragging, body.dragging * {
-  cursor: move !important;
-}
-
-.dragged {
-  position: absolute;
-  opacity: 0.5;
-  z-index: 2000;
-}
-
-ol.example li.placeholder {
-  position: relative;
-  /** More li styles **/
-}
-ol.example li.placeholder:before {
-  position: absolute;
-  /** Define arrowhead **/
+.modal {
+  font-size: 12px;
 }
 
 @media only screen and (min-width: 0px) {
