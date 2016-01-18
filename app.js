@@ -74,8 +74,10 @@ app.post('/', function(req, res) {
 
   // write file with the follow  contents
   fs.writeJsonSync(__dirname + '/config.json', {
-    'title'   : req.body.title,
-    'port'    : req.body.port,
+    'app': {
+      'title'   : req.body.title,
+      'port'    : req.body.port
+    },
     'services': services
   });
 
