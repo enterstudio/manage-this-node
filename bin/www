@@ -8,17 +8,20 @@ var app = require('../app');
 var debug = require('debug')('manage-this-node:server');
 var http = require('http');
 
+// import configuration
+var config = require(__dirname + '/../lib/config');
+
 /**
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || app.port || '3000');  //app.config.app.port || 
+var port = normalizePort(config.app.port);  //app.config.app.port ||
 
 /**
  * Create HTTP server.
  */
 
-var server = http.createServer(app.app);
+var server = http.createServer(app);
 
 /**
  * Listen on provided port, on all network interfaces.

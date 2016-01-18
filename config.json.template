@@ -1,97 +1,128 @@
 {
   "app": {
-    "title": "manage-this-node",
-    "baseUrl": "",
+    "title": "My Sweet Services",
     "port": 3000
   },
-  "rutorrent": {
-    "default": false,
-    "name": "ruTorrent",
-    "url": "",
-    "icon": "fa fa-globe"
-  },
-  "syncthing": {
-    "default": false,
-    "name": "Syncthing",
-    "url": "",
-    "icon": "fa fa-exchange"
-  },
-  "sonarr": {
-    "default": false,
-    "name": "Sonarr",
-    "url": "",
-    "icon": "glyphicon glyphicon-calendar"
-  },
-  "sickrage": {
-    "default": false,
-    "name": "SickRage",
-    "url": "",
-    "icon": "glyphicon glyphicon-calendar"
-  },
-  "couchpotato": {
-    "default": false,
-    "name": "CouchPotato",
-    "url": "",
-    "icon": "fa fa-television"
-  },
-  "headphones": {
-    "default": false,
-    "name": "HeadPhones",
-    "url": "",
-    "icon": "glyphicon glyphicon-headphones"
-  },
-  "glances": {
-    "default": false,
-    "name": "Glances",
-    "url": "",
-    "icon": "glyphicon glyphicon-dashboard"
-  },
-  "plexrequests": {
-    "default": false,
-    "name": "PlexRequests",
-    "url": "",
-    "icon": "glyphicon glyphicon-bullhorn"
-  },
-  "nzbget": {
-    "default": false,
-    "name": "NZBGet",
-    "url": "",
-    "icon": "fa fa-download"
-  },
-  "sabnzbd": {
-    "default": false,
-    "name": "SABNZBd",
-    "url": "",
-    "icon": "fa fa-download"
-  },
-  "plexpy": {
-    "default": false,
-    "name": "PlexPy",
-    "url": "",
-    "icon": "fa fa-server"
-  },
-  "nzbhydra": {
-    "default": false,
-    "name": "NZB Hydra",
-    "url": "",
-    "icon": "glyphicon glyphicon-search"
-  },
-  "deluge": {
-    "default": false,
-    "name": "Deluge",
-    "url": "",
-    "icon": "fa fa-tint"
-  },
-  "plex": {
-    "default": true,
-    "name": "Plex",
-    "url": "https://app.plex.tv/web/",
-    "icon": "fa fa-play-circle"
-  },
-  "emby": {
-    "default": false,
-    "name": "Emby",
-    "url": "",
-    "icon": "fa fa-caret-square-o-right"
-  }
+  "services": [
+    {
+      "_id": 1,
+      "name": "ruTorrent",
+      "default": false,
+      "url": "",
+      "icon": "fa fa-globe",
+      "sort": null
+    },
+    {
+      "_id": 2,
+      "name": "Syncthing",
+      "default": false,
+      "url": "",
+      "icon": "fa fa-exchange",
+      "sort": null
+    },
+    {
+      "_id": 3,
+      "name": "Sonarr",
+      "default": false,
+      "url": "",
+      "icon": "glyphicon glyphicon-calendar",
+      "sort": null
+    },
+    {
+      "_id": 4,
+      "name": "SickRage",
+      "default": false,
+      "url": "",
+      "icon": "glyphicon glyphicon-calendar",
+      "sort": null
+    },
+    {
+      "_id": 5,
+      "name": "CouchPotato",
+      "default": false,
+      "url": "",
+      "icon": "fa fa-television",
+      "sort": null
+    },
+    {
+      "_id": 6,
+      "name": "HeadPhones",
+      "default": false,
+      "url": "",
+      "icon": "glyphicon glyphicon-headphones",
+      "sort": null
+    },
+    {
+      "_id": 7,
+      "name": "Glances",
+      "default": false,
+      "url": "",
+      "icon": "glyphicon glyphicon-dashboard",
+      "sort": null
+    },
+    {
+      "_id": 8,
+      "name": "PlexRequests",
+      "default": false,
+      "url": "",
+      "icon": "glyphicon glyphicon-bullhorn",
+      "sort": null
+    },
+    {
+      "_id": 9,
+      "name": "NZBGet",
+      "default": false,
+      "url": "",
+      "icon": "fa fa-download",
+      "sort": null
+    },
+    {
+      "_id": 10,
+      "name": "SABNZBd",
+      "default": false,
+      "url": "",
+      "icon": "fa fa-download",
+      "sort": null
+    },
+    {
+      "_id": 11,
+      "name": "PlexPy",
+      "default": false,
+      "url": "",
+      "icon": "fa fa-server",
+      "sort": null
+    },
+    {
+      "_id": 12,
+      "name": "NZB Hydra",
+      "default": false,
+      "url": "",
+      "icon": "glyphicon glyphicon-search",
+      "sort": null
+    },
+    {
+      "_id": 13,
+      "name": "Deluge",
+      "default": false,
+      "url": "",
+      "icon": "fa fa-tint",
+      "sort": null
+    },
+    {
+      "_id": 14,
+      "name": "Plex",
+      "default": true,
+      "url": "https://app.plex.tv/web/",
+      "icon": "fa fa-play-circle",
+      "sort": 1
+    },
+    {
+      "_id": 15,
+      "name": "Emby",
+      "default": false,
+      "url": "",
+      "icon": "fa fa-caret-square-o-right",
+      "sort": null
+    }
+  ]
 }

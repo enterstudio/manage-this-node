@@ -1,63 +1,92 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
+var express      = require('express');
+var favicon      = require('serve-favicon');
 var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
+var bodyParser   = require('body-parser');
+var _            = require('lodash');
+var fs           = require('fs-extra');
 
-var routes = require('./routes/index');
+var config = require(__dirname + '/lib/config');
 
 var app = express();
-
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
+app.set('config', config);
+app.set('views', __dirname + '/views');
 app.set('view engine', 'hbs');
-
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-app.use(logger('dev'));
-app.use(bodyParser.json());
+// app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(bodyParser.urlencoded({
-  extended: false
+    extended: true
 }));
+app.use(bodyParser.json());
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(__dirname + '/public'));
 
-app.use('/', routes.router);
+// set local variables
+app.locals.title    = config.app.title;
+app.locals.port     = config.app.port;
+app.locals.services = config.services;
 
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
+/*
+ * GET index
+ */
+app.get('/', function(req, res, next) {
+
+  var enabledServices = _.filter(res.app.locals.services, function(item) {
+    return (item.url !== undefined && item.url !== '');
+  });
+
+  res.render('index', {
+    title: res.app.locals.title,
+    enabledServices: _.sortBy(enabledServices, 'sort'),
+    allServices: _.sortBy(res.app.locals.services, 'sort')
+  });
 });
 
-// error handlers
+/*
+ * POST settings
+ */
+app.post('/', function(req, res) {
 
-// development error handler
-// will print stacktrace
-if (app.get('env') === 'development') {
-  app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-      message: err.message,
-      error: err
+  console.log(JSON.stringify(req.body));
+
+  var services = [];
+  _.forEach(req.body.services, function(n, key) {
+    var _id  = n._id;
+    var name = n.name;
+    var url  = n.url;
+    var icon = n.icon;
+    var sort = n.sort || null;
+
+    var defaultPage = false;
+    if (_id == req.body.default) {
+      defaultPage = true;
+    }
+
+    services.push({
+      '_id'    : _id,
+      'name'   : name,
+      'url'    : url,
+      'icon'   : icon,
+      'sort'   : sort,
+      'default': defaultPage
     });
   });
-}
 
-// production error handler
-// no stacktraces leaked to user
-app.use(function(err, req, res, next) {
-  res.status(err.status || 500);
-  res.render('error', {
-    message: err.message,
-    error: {}
+  console.log(JSON.stringify(services));
+
+  // update for session
+  res.app.locals.title    = req.body.title;
+  // res.app.locals.port     = req.body.port; // don't update port (this will be updated on restart)
+  res.app.locals.services = services;
+
+  // write file with the follow  contents
+  fs.writeJsonSync(__dirname + '/config.json', {
+    'title'   : req.body.title,
+    'port'    : req.body.port,
+    'services': services
   });
+
+  // redirect to home
+  res.redirect('/');
+
 });
 
-
-module.exports = {
-    app: app,
-    port: routes.port
-};
+module.exports = app;

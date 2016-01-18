@@ -10,6 +10,10 @@ jQuery(document).ready(function($){
 		tabItems.on('click', 'a', function(event){
 			event.preventDefault();
 			var selectedItem = $(this);
+			if (selectedItem.attr('id') === 'settings') {
+				return;
+			}
+
 			if( !selectedItem.hasClass('selected') ) {
 				var selectedTab = selectedItem.data('content'),
 					selectedContent = tabContentWrapper.find('li[data-content="'+selectedTab+'"]'),
@@ -20,7 +24,7 @@ jQuery(document).ready(function($){
 				});
 
 				var sifsrc = selectedContent.children('iframe').attr('src');
-				if (sifsrc === undefined || sifsrc === "") {
+				if (sifsrc === undefined || sifsrc === '') {
 					selectedContent.children('iframe').attr('src', selectedContent.children('iframe').data('src'));
 				}
 
@@ -41,12 +45,14 @@ jQuery(document).ready(function($){
 		});
 	});
 
-
 	$('#reload').on('click', function(){
 		var selectedFrame = $('.cd-tabs-content').find('.selected').children('iframe');
 		selectedFrame.attr('src', selectedFrame.attr('src'));
 	});
 
+	$('#settings').on('click', function(){
+		$('#modalSettings').modal('show');
+	});
 
 	$(window).on('resize', function(){
 		tabs.each(function(){
@@ -57,6 +63,19 @@ jQuery(document).ready(function($){
 		resizeIframe(); // Resize iframes when window is resized.
 	});
 
+	$('input[type=number][name=port]').tooltip({
+    placement: 'right',
+    trigger: 'focus'
+	});
+
+	$('#submit').click(function() {
+			$('#form').submit();
+	});
+
+	// var sortable = Sortable.create(sortableServices, {
+	//   handle: '.handle',
+	//   animation: 150
+	// });
 
 	function checkScrolling(tabs){
 		var totalTabWidth = parseInt(tabs.children('.cd-tabs-navigation').width()),
@@ -75,6 +94,6 @@ jQuery(document).ready(function($){
 	}
 
 
-// Call resizeIframe when document is ready
-resizeIframe();
+	// Call resizeIframe when document is ready
+	resizeIframe();
 });
