@@ -45,8 +45,6 @@ app.get('/', function(req, res, next) {
  */
 app.post('/', function(req, res) {
 
-  console.log(JSON.stringify(req.body));
-
   var services = [];
   _.forEach(req.body.services, function(n, key) {
     var _id  = n._id;
@@ -70,11 +68,8 @@ app.post('/', function(req, res) {
     });
   });
 
-  console.log(JSON.stringify(services));
-
   // update for session
   res.app.locals.title    = req.body.title;
-  // res.app.locals.port     = req.body.port; // don't update port (this will be updated on restart)
   res.app.locals.services = services;
 
   // write file with the follow  contents
