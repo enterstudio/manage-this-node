@@ -5,6 +5,8 @@ NodeJS version of [Muximux](https://github.com/mescon/Muximux/) and [Managethis]
 Getting Started
 ---------------
 
+If upgrading to a new version, make sure you check the `config.json.template` for changes.
+
 ## Prerequisites
 - [Node.js](http://nodejs.org) v4.2.x
 - [Git](https://git-scm.com/downloads) (optional)
