@@ -29,9 +29,11 @@ npm install
 cp config.json.template config.json
 ```
 
-In `config.json` fill in the URL values for each service you want to use.
+In `config.json` fill in the `port` you want to use if you don't want to use port `3000`.
 
-Change `default` to `true` for the one service you want to show when the page is loaded.
+Everything else can be handled when the app is running via the settings menu.
+
+**Important note**: Restart the app after making any changes to the `config.json` file.
 
 ## Start the app
 
@@ -39,9 +41,8 @@ Change `default` to `true` for the one service you want to show when the page is
 # Start the app
 npm start
 ```
-**Important note**: Restart the app after making any changes to the `config.json` file.
 
-Goto `localhost:3000` to see the app.
+Open `localhost:3000` in your browser to see the app.
 
 ## Running forever
 To have the app run forever in the background
@@ -50,11 +51,12 @@ To have the app run forever in the background
 # Install forever
 npm install forever -g
 
-# Run forever
+# Run
 forever start ./bin/www
-```
 
-**Important note**: Restart the app after making any changes to the `config.json` file.
+# Stop
+forever stop ./bin/www
+```
 
 Goto `localhost:3000` to see the app.
 
