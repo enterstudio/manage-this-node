@@ -62,6 +62,9 @@ forever stop ./bin/www
 
 Goto `localhost:3000` to see the app.
 
+## Docker
+A dockerfile for this has been provided by [chimpchimp](https://github.com/chimpchimp) [here](https://github.com/chimpchimp/docker-manage-this-node)
+
 App Specific Workarounds
 ---------------
 **Emby**  
@@ -72,6 +75,9 @@ Windows:
 * Look for `<DenyIFrameEmbedding>true</DenyIFrameEmbedding>` replace `true` with `false`  
 * Should look like `<DenyIFrameEmbedding>false</DenyIFrameEmbedding>`  
 * Save the file and restart Emby  
+
+Additional Information
+---------------
 
 ## Differences from [Muximux](https://github.com/mescon/Muximux/) and [Managethis](https://github.com/Tenzinn3/Managethis)
 - Written in NodeJS, which comes with it's own webserver.
