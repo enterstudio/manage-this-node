@@ -7,11 +7,11 @@ Getting Started
 
 If upgrading to a new version, make sure you check the `config.json.template` for changes.
 
-## Prerequisites
+### Prerequisites
 - [Node.js](http://nodejs.org) v4.2.x
 - [Git](https://git-scm.com/downloads) (optional)
 
-## Installation
+### Installation
 
 ```bash
 # Clone the repository or download the ZIP and extract it
@@ -24,7 +24,7 @@ cd manage-this-node
 npm install
 ```
 
-## Configuration
+### Configuration
 
 ```bash
 # Copy config.json.template to config.json
@@ -37,7 +37,7 @@ Everything else can be handled when the app is running via the settings menu.
 
 **Important note**: Restart the app after making any changes to the `config.json` file.
 
-## Start the app
+### Start the app
 
 ```bash
 # Start the app
@@ -46,7 +46,7 @@ npm start
 
 Open `localhost:3000` in your browser to see the app.
 
-## Running forever
+### Running forever
 To have the app run forever in the background
 
 ```bash
@@ -62,7 +62,7 @@ forever stop ./bin/www
 
 Goto `localhost:3000` to see the app.
 
-## Docker
+### Docker
 A dockerfile for this has been provided by [chimpchimp](https://github.com/chimpchimp) [here](https://github.com/chimpchimp/docker-manage-this-node)
 
 App Specific Workarounds
@@ -79,12 +79,12 @@ Windows:
 Additional Information
 ---------------
 
-## Differences from [Muximux](https://github.com/mescon/Muximux/) and [Managethis](https://github.com/Tenzinn3/Managethis)
+### Differences from [Muximux](https://github.com/mescon/Muximux/) and [Managethis](https://github.com/Tenzinn3/Managethis)
 - Written in NodeJS, which comes with it's own webserver.
 - In App configuration
 
-## Notes
+### Notes
 It is strongly advised if this WebApp is open to the outside world use Basic Auth (.htpasswd / .htaccess). Your URLs (and passwords) are exposed in the HTML source.
 
-## Known Issues
+### Known Issues
 - Problem: Nothing is displaying, Solution: Disable Adblock/uBlock and Ghostery/Privacy Badger for the website.
