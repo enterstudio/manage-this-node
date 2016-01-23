@@ -3,7 +3,6 @@ var favicon      = require('serve-favicon');
 var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
 var _            = require('lodash');
-var fs           = require('fs-extra');
 
 var config = require(__dirname + '/lib/config');
 
@@ -73,13 +72,7 @@ app.post('/', function(req, res) {
   res.app.locals.services = services;
 
   // write file with the follow  contents
-  fs.writeJsonSync(__dirname + '/config.json', {
-    'app': {
-      'title'   : req.body.title,
-      'port'    : req.body.port
-    },
-    'services': services
-  });
+  config.save(req.body.title, req.body.port, req.body.version, services);  
 
   // redirect to home
   res.redirect('/');
