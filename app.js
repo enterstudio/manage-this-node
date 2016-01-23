@@ -80,10 +80,9 @@ app.post('/', function(req, res) {
     },
     'services': services
   });
-
+  
   // redirect to home
   res.redirect('/');
-
 });
 
 module.exports = app;
