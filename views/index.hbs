@@ -11,7 +11,7 @@
         </li>
       {{/each}}
 
-      <li style="float: right;">
+      <li style="float:right;">
         <a id="settings"><span class="fa fa-cog fa-lg"></span></a>
       </li>
       <li>
@@ -24,11 +24,11 @@
     {{#each services}}
       {{#if default}}
         <li data-content="{{_id}}" class="selected">
-          <iframe scrolling="auto" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" src="{{url}}"></iframe>
+          <iframe sandbox="allow-forms allow-same-origin allow-pointer-lock allow-scripts" scrolling="auto" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" src="{{url}}"></iframe>
         </li>
       {{else}}
         <li data-content="{{_id}}">
-          <iframe scrolling="auto" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" data-src="{{url}}"></iframe>
+          <iframe sandbox="allow-forms allow-same-origin allow-pointer-lock allow-scripts" scrolling="auto" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" data-src="{{url}}"></iframe>
         </li>
       {{/if}}
     {{/each}}
