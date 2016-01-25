@@ -4,6 +4,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
 var _            = require('lodash');
 var fs           = require('fs-extra');
+var Xray         = require('x-ray');
 
 var config = require(__dirname + '/lib/config');
 
@@ -37,6 +38,38 @@ app.get('/', function(req, res, next) {
     title: res.app.locals.title,
     enabledServices: _.sortBy(enabledServices, 'sort'),
     allServices: _.sortBy(res.app.locals.services, 'sort')
+  });
+});
+
+/*
+ * GET commits
+ */
+app.get('/commits', function(req, res, next) {
+
+  var scraper = new Xray();
+  scraper('https://github.com/onedr0p/manage-this-node/commits/master',
+    '.table-list-cell',
+    [{
+      title: '.commit-title',
+      author: 'a.commit-author',
+      date: 'time'
+    }]
+  )(function(err, result){
+
+    var commitLog = [];
+    _.forEach(result, function(n, key) {
+
+      var commitTitle = n.title.trim();
+      commitTitle = commitTitle.replace(/[^A-Za-z 0-9 \.,\?""!@#\$%\^&\*\(\)-_=\+;:<>\/\\\|\}\{\[\]`~]+/g, '');
+
+      commitLog.push({
+        title: commitTitle.trim(),
+        author: n.author.trim(),
+        date: n.date.trim()
+      });
+    });
+
+    res.send(commitLog);
   });
 });
 
@@ -80,7 +113,7 @@ app.post('/', function(req, res) {
     },
     'services': services
   });
-  
+
   // redirect to home
   res.redirect('/');
 });

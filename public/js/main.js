@@ -14,6 +14,10 @@ jQuery(document).ready(function($){
 				return;
 			}
 
+			if (selectedItem.attr('id') === 'commits') {
+				return;
+			}
+
 			if( !selectedItem.hasClass('selected') ) {
 				var selectedTab = selectedItem.data('content'),
 					selectedContent = tabContentWrapper.find('li[data-content="'+selectedTab+'"]'),
@@ -52,6 +56,20 @@ jQuery(document).ready(function($){
 
 	$('#settings').on('click', function(){
 		$('#modalSettings').modal('show');
+	});
+
+	$('#commits').on('click', function(){
+		var commitModal = $('#modalCommits');
+		$.getJSON('/commits').done(function(json) {
+
+			var htmlData = '';
+			$.each(json, function(key, item) {
+			  htmlData = htmlData + '<li>' + item.title + ' by ' + item.author + ' on ' + item.date + '</li>';
+			});
+
+      commitModal.find('.modal-body').html('<ul>' + htmlData + '</ul>');
+    	commitModal.modal('show');
+  	});
 	});
 
 	$(window).on('resize', function(){

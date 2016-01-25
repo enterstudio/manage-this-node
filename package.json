@@ -16,7 +16,8 @@
     "lodash": "^4.0.0",
     "moment": "^2.11.1",
     "morgan": "~1.6.1",
-    "serve-favicon": "~2.3.0"
+    "serve-favicon": "~2.3.0",
+    "x-ray": "^2.0.3"
   },
   "repository": "git://github.com/onedr0p/manage-this-node",
   "keywords": [
