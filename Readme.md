@@ -5,8 +5,6 @@ NodeJS version of [Muximux](https://github.com/mescon/Muximux/) and [Managethis]
 Getting Started
 ---------------
 
-If upgrading to a new version, make sure you check the `config.json.template` for changes.
-
 ### Prerequisites
 - [Node.js](http://nodejs.org) v4.2.x
 - [Git](https://git-scm.com/downloads) (optional)
@@ -24,6 +22,9 @@ cd manage-this-node
 npm install
 ```
 
+### Upgrading
+It's a good idea to run `npm install` to avoid any problems.
+
 ### Configuration
 
 ```bash
@@ -35,7 +36,7 @@ In `config.json` fill in the `port` you want to use if you don't want to use por
 
 Everything else can be handled when the app is running via the settings menu.
 
-**Important note**: Restart the app after making any changes to the `config.json` file.
+**Important note**: If you must change the `config.json` file by hand, restart the app to see the changes.
 
 ### Start the app
 
@@ -79,9 +80,8 @@ Windows:
 Additional Information
 ---------------
 
-### Differences from [Muximux](https://github.com/mescon/Muximux/) and [Managethis](https://github.com/Tenzinn3/Managethis)
-- Written in NodeJS, which comes with it's own webserver.
-- In App configuration
+### Contributing
+Feel free to fork this and submit a PR with your code changes.
 
 ### Notes
 It is strongly advised if this WebApp is open to the outside world use Basic Auth (.htpasswd / .htaccess). Your URLs (and passwords) are exposed in the HTML source.
