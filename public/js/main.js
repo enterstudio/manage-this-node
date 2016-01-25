@@ -13,6 +13,10 @@ jQuery(document).ready(function($){
 			if (selectedItem.attr('id') === 'settings') {
 				return;
 			}
+			
+			if (selectedItem.attr('id') === 'commits') {
+				return;
+			}
 
 			if( !selectedItem.hasClass('selected') ) {
 				var selectedTab = selectedItem.data('content'),
@@ -52,6 +56,10 @@ jQuery(document).ready(function($){
 
 	$('#settings').on('click', function(){
 		$('#modalSettings').modal('show');
+	});
+
+	$('#commits').on('click', function(){
+		$('#modalCommits').modal('show');
 	});
 
 	$(window).on('resize', function(){

@@ -15,7 +15,7 @@
         <a id="settings"><span class="fa fa-cog fa-lg"></span></a>
       </li>
       <li style="float: right;">
-        <a id="github"><span class="fa fa-github fa-lg"></span></a>
+        <a id="commits"><span class="fa fa-github fa-lg"></span></a>
       </li>
       <li>
         <a id="reload"><span class="fa fa-refresh fa-lg"></span></a>
@@ -38,7 +38,7 @@
   </ul>
 </div>
 
-<!-- Modal -->
+<!-- Service Modal -->
 <div class="modal fade" id="modalSettings" tabindex="-1" role="dialog" aria-labelledby="Settings" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
@@ -96,6 +96,28 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         <button id="submit" type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Commit Modal -->
+<div class="modal fade" id="modalCommits" tabindex="-1" role="dialog" aria-labelledby="Commits" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="modalSettingsLabel">Updates</h4>
+      </div>
+      <div class="modal-body">
+
+        {{#each commitLog}}
+          <div>{{title}} by {{author}} on {{date}}</div>
+        {{/each}}
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
