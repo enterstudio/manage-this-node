@@ -13,7 +13,7 @@ jQuery(document).ready(function($){
 			if (selectedItem.attr('id') === 'settings') {
 				return;
 			}
-			
+
 			if (selectedItem.attr('id') === 'commits') {
 				return;
 			}
@@ -59,7 +59,17 @@ jQuery(document).ready(function($){
 	});
 
 	$('#commits').on('click', function(){
-		$('#modalCommits').modal('show');
+		var commitModal = $('#modalCommits');
+		$.getJSON('/commits').done(function(json) {
+
+			var htmlData = '';
+			$.each(json, function(key, item) {
+			  htmlData = htmlData + '<li>' + item.title + ' by ' + item.author + ' on ' + item.date + '</li>';
+			});
+
+      commitModal.find('.modal-body').html('<ul>' + htmlData + '</ul>');
+    	commitModal.modal('show');
+  	});
 	});
 
 	$(window).on('resize', function(){

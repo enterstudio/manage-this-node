@@ -34,8 +34,18 @@ app.get('/', function(req, res, next) {
     return (item.url !== undefined && item.url !== '');
   });
 
-  // This needs serious refactoring
-  // Too bad github doesn't like iframes
+  res.render('index', {
+    title: res.app.locals.title,
+    enabledServices: _.sortBy(enabledServices, 'sort'),
+    allServices: _.sortBy(res.app.locals.services, 'sort')
+  });
+});
+
+/*
+ * GET commits
+ */
+app.get('/commits', function(req, res, next) {
+
   var scraper = new Xray();
   scraper('https://github.com/onedr0p/manage-this-node/commits/master',
     '.table-list-cell',
@@ -59,14 +69,7 @@ app.get('/', function(req, res, next) {
       });
     });
 
-    // console.log(commitLog);
-
-    res.render('index', {
-      title: res.app.locals.title,
-      enabledServices: _.sortBy(enabledServices, 'sort'),
-      allServices: _.sortBy(res.app.locals.services, 'sort'),
-      commitLog: commitLog
-    });
+    res.send(commitLog);
   });
 });
 
