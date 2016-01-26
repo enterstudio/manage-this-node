@@ -64,7 +64,7 @@ jQuery(document).ready(function($){
 
 			var htmlData = '';
 			$.each(json, function(key, item) {
-			  htmlData = htmlData + '<li><b>' + item.date + '</b> - ' + item.title + ' by <b>' + item.author + '</b></li>';
+			  htmlData = htmlData + '<li><strong>' + item.date + '</strong> - ' + item.title + ' by <strong>' + item.author + '</strong></li>';
 			});
 
       commitModal.find('.modal-body').html('<ul>' + htmlData + '</ul>');
