@@ -115,7 +115,7 @@ app.post('/', function(req, res) {
   });
 
   // redirect to home
-  res.redirect('/');
+  res.redirect('back');
 });
 
 module.exports = app;
