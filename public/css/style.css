@@ -157,7 +157,37 @@ Main components
 }
 
 .modal {
-  font-size: 12px;
+  font-size: 14px;
+  color: #8493bf;
+}
+
+.modal-header {
+    font-weight: bold;
+    padding:9px 15px;
+    border-bottom:1px solid #8493bf;
+    background-color: #343843;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+     border-top-left-radius: 5px;
+     border-top-right-radius: 5px;
+}
+
+.modal-content {
+  background-color: #41434f;
+}
+
+.modal-footer {
+  padding:9px 15px;
+  border-top:1px solid #8493bf;
+  background-color: #343843;
+  -webkit-border-bottom-left-radius: 5px;
+  -webkit-border-bottom-right-radius: 5px;
+  -moz-border-radius-bottomleft: 5px;
+  -moz-border-radius-bottomright: 5px;
+   border-bottom-left-radius: 5px;
+   border-bottom-right-radius: 5px;
 }
 
 @media only screen and (min-width: 0px) {

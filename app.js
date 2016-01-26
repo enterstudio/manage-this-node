@@ -55,7 +55,6 @@ app.get('/commits', function(req, res, next) {
       date: 'time'
     }]
   )(function(err, result){
-
     var commitLog = [];
     _.forEach(result, function(n, key) {
 
@@ -69,6 +68,7 @@ app.get('/commits', function(req, res, next) {
       });
     });
 
+    // send json to front-end
     res.send(commitLog);
   });
 });
