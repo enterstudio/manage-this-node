@@ -33,6 +33,12 @@ iframe {
   background-color: #fff;
 }
 
+.input-sm {
+    background-color: lightgray;
+    color: black;
+}
+
+
 /* --------------------------------
 
 Main components
