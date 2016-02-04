@@ -109,7 +109,8 @@ app.post('/', function(req, res) {
   fs.writeJsonSync(__dirname + '/config.json', {
     'app': {
       'title'   : req.body.title,
-      'port'    : req.body.port
+      'port'    : req.body.port,
+      'version' : config.app.version
     },
     'services': services
   });
