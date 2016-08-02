@@ -38,6 +38,12 @@ Everything else can be handled when the app is running via the settings menu.
 
 **Important note**: If you must change the `config.json` file by hand, restart the app to see the changes.
 
+Basic auth is available by passing `BASIC_AUTH_USER` and `BASIC_AUTH_PASSWORD` through environment variables.
+
+```bash
+BASIC_AUTH_USER=user BASIC_AUTH_PASSWORD=password npm start
+```
+
 ### Start the app
 
 ```bash
@@ -71,7 +77,7 @@ App Specific Workarounds
 **Emby**  
 By Default Emby sends a header that prevents loading in an iframe.   
 
-Windows: 
+Windows:
 * Edit `C:\Users\<username>\AppData\Roaming\MediaBrowser-Server\config\system.xml`  
 * Look for `<DenyIFrameEmbedding>true</DenyIFrameEmbedding>` replace `true` with `false`  
 * Should look like `<DenyIFrameEmbedding>false</DenyIFrameEmbedding>`  
