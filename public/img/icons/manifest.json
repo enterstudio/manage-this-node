@@ -2,12 +2,12 @@
 	"name": "Manage This",
 	"icons": [
 		{
-			"src": "\/public\/img\/icons\/android-chrome-192x192.png?v=2bwQ2MnrLw",
+			"src": "img\/icons\/android-chrome-192x192.png?v=2bwQ2MnrLw",
 			"sizes": "192x192",
 			"type": "image\/png"
 		},
 		{
-			"src": "\/public\/img\/icons\/android-chrome-512x512.png?v=2bwQ2MnrLw",
+			"src": "img\/icons\/android-chrome-512x512.png?v=2bwQ2MnrLw",
 			"sizes": "512x512",
 			"type": "image\/png"
 		}
