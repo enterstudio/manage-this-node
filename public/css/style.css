@@ -1,7 +1,5 @@
 /* --------------------------------
-
 Primary style
-
 -------------------------------- */
 *, *::after, *::before {
   -webkit-box-sizing: border-box;
@@ -40,41 +38,17 @@ iframe {
 
 
 /* --------------------------------
-
 Main components
-
 -------------------------------- */
 
+
+/* Tab Nav */
 .cd-tabs nav {
-  overflow: hidden;
   -webkit-overflow-scrolling: touch;
   box-shadow: inset 0 -2px 3px rgba(203, 196, 130, 0.06);
-  }
-}
-
-@media only screen and (min-width: 0px) {
-  .cd-tabs nav {
-    overflow: auto;
-    margin: 0;
-    position: relative;
-    float: none;
-    background: transparent;
-    box-shadow: none;
-  }
-}
-
-.cd-tabs-navigation {
-  width: 360px;
-}
-
-.cd-tabs-navigation:after {
-  content: "";
-  display: table;
-  clear: both;
 }
 
 .cd-tabs-navigation li {
-  float: left;
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none;   /* Chrome/Safari/Opera */
   -khtml-user-select: none;    /* Konqueror */
@@ -82,26 +56,24 @@ Main components
   -ms-user-select: none;       /* Internet Explorer/Edge */
   user-select: none;           /* Non-prefixed version, currently
                                   not supported by any browser */
+  background-color: #343843; /* Main nav colour */
 }
 
-.cd-tabs-navigation li:last-child {
-  float: right;
-  right: 0px;
+/*Only show box shadows on mobile view*/
+@media only screen and (max-width: 991px) {
+  .cd-tabs-navigation li {
+    box-shadow: inset 0 -2px 3px rgba(203, 196, 130, 0.06);
+  }
 }
+
 
 .cd-tabs-navigation a, #reload {
-  position: relative;
-  display: block;
-  height: 160px;
-  width: 30px;
   text-align: center;
   font-size: 14px;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-weight: 700;
-  color: #747b8b;
-  padding-top: 32px;
 }
 
 #reload, .cd-tabs-navigation li {
@@ -116,35 +88,21 @@ Main components
 .cd-tabs-navigation a.selected:not(#reload) {
   background-color: #41434f !important; /* Selected tab colour */
   color: #f1f3f2; /* Selected text colour */
+  box-shadow: inset 0 5px 0 #31ac63; /* Selected tab marker colour */
 }
 
-@media only screen and (min-width: 0px) {
-  .cd-tabs-navigation {
-    /* tabbed on top of devices */
-    width: 100%;
-    background-color: #343843; /* Main nav colour */
-    box-shadow: inset 0 -2px 3px rgba(203, 196, 130, 0.06);
-  }
-  .cd-tabs-navigation a, #reload {
-    height: 40px;
-    line-height: 45px;
-    width: 100%;
-    text-align: center;
-    font-size: 14px;
-    font-size: 0.875rem;
-    padding: 0 2em 0 2em;
-  }
-  .cd-tabs-navigation a.selected:not(#reload) {
-    box-shadow: inset 0 5px 0 #31ac63; /* Selected tab marker colour */
-  }
-  .cd-tabs-navigation a::before {
-    top: 50%;
-    margin-top: -10px;
-    margin-left: 0;
-    left: 0px;
-  }
+.cd-tabs-navigation {
+  /* tabbed on top of devices */
+  width: 100%;
+  background-color: #343843; /* Main nav colour */
+  box-shadow: inset 0 -2px 3px rgba(203, 196, 130, 0.06);
 }
+/* End Tab Nav */
 
+
+
+
+/* Tab Content */
 .cd-tabs-content {
   background: #36363b; /* Content background colour */
 }
@@ -202,6 +160,17 @@ Main components
    border-bottom-left-radius: 5px;
    border-bottom-right-radius: 5px;
 }
+
+.modal .close {
+  padding: 0 10px;
+  color: #ffffff;
+  background-color: rgba(233, 230, 202, 0.7);
+  border-style: solid;
+  border-width: 1px;
+  border-color: #8493bf;
+  font-weight: bold;
+}
+
 
 @media only screen and (min-width: 0px) {
   .cd-tabs-content {
