@@ -8,11 +8,14 @@ var Xray         = require('x-ray');
 var basicAuth    = require('basic-auth-connect');
 
 var config = require(__dirname + '/lib/config');
+var router = express.Router();
+
 
 var app = express();
 if (process.env.BASIC_AUTH_USER && process.env.BASIC_AUTH_PASSWORD) {
   app.use(basicAuth(process.env.BASIC_AUTH_USER, process.env.BASIC_AUTH_PASSWORD));
 }
+
 app.set('config', config);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'hbs');
@@ -23,16 +26,18 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(express.static(__dirname + '/public'));
+app.use(config.app.urlbase, router);
 
 // set local variables
 app.locals.title    = config.app.title;
 app.locals.port     = config.app.port;
+app.locals.urlbase  = config.app.urlbase;
 app.locals.services = config.services;
 
 /*
  * GET index
  */
-app.get('/', function(req, res, next) {
+router.use('/', function(req, res, next) {
 
   var enabledServices = _.filter(res.app.locals.services, function(item) {
     return (item.url !== undefined && item.url !== '');
@@ -114,6 +119,7 @@ app.post('/', function(req, res) {
     'app': {
       'title'   : req.body.title,
       'port'    : req.body.port,
+      'urlbase' : req.body.urlbase,
       'version' : config.app.version
     },
     'services': services
