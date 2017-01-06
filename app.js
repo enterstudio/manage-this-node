@@ -37,7 +37,7 @@ app.locals.services = config.services;
 /*
  * GET index
  */
-router.use('/', function(req, res, next) {
+router.get('/', function(req, res, next) {
 
   var enabledServices = _.filter(res.app.locals.services, function(item) {
     return (item.url !== undefined && item.url !== '');
@@ -126,7 +126,7 @@ app.post('/', function(req, res) {
   });
 
   // redirect to home
-  res.redirect('back');
+  res.redirect('/');
 });
 
 module.exports = app;
