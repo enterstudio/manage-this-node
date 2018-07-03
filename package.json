@@ -4,7 +4,9 @@
   "description": "A landing page for your WebApps",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "dependencies": {
     "basic-auth-connect": "^1.0.0",
@@ -18,7 +20,8 @@
     "moment": "^2.11.1",
     "morgan": "~1.6.1",
     "serve-favicon": "~2.3.0",
-    "x-ray": "^2.0.3"
+    "x-ray": "^2.0.3",
+    "snyk": "^1.88.0"
   },
   "repository": "git://github.com/onedr0p/manage-this-node",
   "keywords": [
@@ -39,5 +42,6 @@
   "license": "GPL",
   "devDependencies": {
     "jshint": "^2.9.1-rc1"
-  }
+  },
+  "snyk": true
 }
